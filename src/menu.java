@@ -21,7 +21,7 @@ public class menu {
 
     public static void menuEscolhaUserAdmin (){
         cabecalho();
-        System.out.println("    Digite (1) Para Acessar Usuario OU (2) Para Acessar Admin: ");
+        System.out.println("    Digite (1) Para Acessar Usuario Ou (2) Para Acessar Admin: ");
         String input = scanner.next();
         if (input.equals("1")){
             menuCriarOuLoginUser();
@@ -44,23 +44,16 @@ public class menu {
 
     public static void menuCriarNovoUser (){
         cabecalho();
-        System.out.println("Digite Seu Usuário: ");
-        String cadUser = scanner.next();
-        System.out.println("Digite Uma Senha Segura: ");
-        String cadPass = scanner.next();
-        System.out.println("Digite Sua Idade: ");
-        String cadIdade = scanner.next();
-        clientes.getInfos(cadUser, cadPass, cadIdade);
+        System.out.println("    Crie Um Novo Usuário");
+        System.out.println(" ");
+        autenticacao.registroUser();
     }
 
     public static void menuUsuarioLogin (){
         cabecalho();
         System.out.println("    Faça o Seu Login Como Usuario:");
-        if (autenticacao.loginUsuario()){
-            menuUsuario();
-        } else {
-            System.out.println("Login Errado");
-        }
+        System.out.println(" ");
+        autenticacao.loginUsuario();
     }
 
     public static void menuAdminLogin (){
@@ -73,13 +66,14 @@ public class menu {
         }
     }
 
-    private static void menuUsuario (){
+    public static void menuUsuario (){
         cabecalho();
         System.out.println("    Escolha Entre As Opções Abaixo:");
         System.out.println("1- Vizualizar Saldo");
         System.out.println("2- Efetuar Saque");
         System.out.println("3- Efetuar Deposito");
         System.out.println("4- Efetuar Transferencia");
+        System.out.println("9 - SAIR");
         String menuUserInput = scanner.next();
         checkMenuUserInput(menuUserInput);
 
@@ -94,6 +88,8 @@ public class menu {
             menuUsuarioDeposito();
         } else if (menuUserinput.equals("4")) {
             menuUsuarioTransferencia();
+        } else if (menuUserinput.equals("9")) {
+            menuCriarOuLoginUser();
         } else {menuUsuario();}
     }
 
